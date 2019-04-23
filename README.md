@@ -273,3 +273,11 @@ const App: React.FC = () => {
 
 export default App;
 ```
+
+## Congratulations
+
+Congratulations! You just built your react app, what we did so far:
+- create a new app using `create-create-app`
+- use typescript
+- how to handle state using react hooks
+- how to submit a form using react
