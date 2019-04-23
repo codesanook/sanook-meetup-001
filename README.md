@@ -24,3 +24,28 @@ To create a production build, use yarn build (or npm run build).
 
 Links: [react-create-app](https://github.com/facebook/create-react-app)
 
+## Add the CSS and Delete Generated Code
+
+Open `App.css` and read the code is a small css code. 
+
+Now Replace `./contact/src/App.css` by `./App.css`
+
+and, 
+
+Delete the generated code inside the `return` in `App.tsx`, your file should be like that:
+
+`App.tsx`
+```
+import React from 'react';
+import './App.css';
+
+const App: React.FC = () => {
+  return (
+    <div>
+    </div>
+  );
+}
+
+export default App;
+```
+
