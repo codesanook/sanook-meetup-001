@@ -95,4 +95,87 @@ const App: React.FC = () => {
 export default App;
 ```
 
+## Add `value`, `state` and `hooks`
 
+Also in `App.tsx`, import `useState` hook from `react`:
+
+`import React, { useState } from 'react';`
+
+Then create the state properties:
+
+```
+const [name, setName] = useState('');
+const [email, setEmail] = useState('');
+const [message, setMessage] = useState('');
+```
+
+then add the `value` and `onChange` in the `input` elements.
+
+```
+<input type="text"
+  name="name"
+  id="name"
+  value={name}
+  onChange={e => setName(e.target.value)}
+  placeholder="Name"
+  className="form-field"
+  required
+  autoFocus />
+```
+
+> Repeat for the email, and message.
+
+To verify your `App.tsx` should be like that:
+
+`App.tsx`
+```
+import React, { useState } from 'react';
+import './App.css';
+
+const App: React.FC = () => {
+
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+
+  return (
+    <div className="container">
+      <section>
+        <h3 className="title">Hi, there!</h3>
+        <form>
+          <input type="text"
+            name="name"
+            id="name"
+            value={name}
+            onChange={e => setName(e.target.value)}
+            placeholder="Name"
+            className="form-field"
+            required
+            autoFocus />
+          <input type="email"
+            name="email"
+            id="email"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            placeholder="Email"
+            className="form-field"
+            required />
+          <textarea
+            name="message"
+            id="message"
+            value={message}
+            onChange={e => setMessage(e.target.value)}
+            placeholder="Message"
+            rows={4}
+            className="form-field"
+            required>
+          </textarea>
+          <input type="submit" value="Send Message" className="btn"></input>
+        </form>
+      </section>
+    </div>
+  );
+}
+
+export default App;
+```
