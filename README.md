@@ -2,14 +2,25 @@
 
 # CodeSanook Workshop 001: React, TypeScript and VS Code.
 
-## Install `react-create-app`
+## Create an App with React and Typescript `react-create-app` 
 
-`npm install -g create-react-app` and `create-react-app my-app --typescript`
+Run in your terminal: 
 
-or 
+`$ npx create-react-app APP_NAME --typescript`
 
-`npx create-react-app my-app --typescript`
+> Replace APP_NAME for the name of your app
 
-> `npx* npm 5.2+`
+The output will be like that:
 
-[react-create-app](https://github.com/facebook/create-react-app)
+```
+You can now view contact-final in the browser.
+
+  Local:            http://localhost:3000/
+  On Your Network:  http://192.168.1.8:3000/
+
+Note that the development build is not optimized.
+To create a production build, use yarn build (or npm run build).
+```
+
+Links: [react-create-app](https://github.com/facebook/create-react-app)
+
