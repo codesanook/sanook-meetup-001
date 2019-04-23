@@ -3,15 +3,29 @@ import './App.css';
 
 const App: React.FC = () => {
 
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    alert(`
+      Hi, ${name}!
+      Email: ${email}
+      Message: ${message}
+    `);
+
+    setName("");
+    setEmail("");
+    setMessage("");
+  }
 
   return (
     <div className="container">
       <section>
         <h3 className="title">Hi, there!</h3>
-        <form>
+        <form onSubmit={submitForm}>
           <input type="text"
             name="name"
             id="name"
