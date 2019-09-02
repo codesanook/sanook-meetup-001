@@ -24,7 +24,7 @@ const App: React.FC = () => {
   return (
     <div className="container">
       <section>
-        <h3 className="title">Hi!</h3>
+        <h3 className="title">Hi, there!</h3>
         <form onSubmit={submitForm}>
           <input type="text"
             name="name"
