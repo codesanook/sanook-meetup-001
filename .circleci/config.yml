@@ -34,6 +34,59 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      # run tests!
+      # buil!
       - run: yarn build
+      # run tests!
       - run: yarn test
+      # save dist folder!
+      - persist_to_workspace:
+          # Must be an absolute path, or relative path from working_directory. This is a directory on the container which is 
+          # taken to be the root directory of the workspace.
+          root: ~/repo/contact-final
+          # Must be relative path from root
+          paths:
+            - build
+
+  deploy:
+    docker:
+      - image: buildpack-deps:trusty
+    
+    working_directory: ~/repo/contact-final/build
+
+    steps:
+      - attach_workspace:
+          # Must be absolute path or relative path from working_directory
+          at: ~/repo/contact-final
+      
+      - run:
+          name: git init
+          command: |
+            echo '{"root":"."}' > static.json
+            ls
+            git init
+            git config --global user.email "deploy@codesanook.com"
+            git config --global user.name "CircleCI Deploy"
+            git add -A
+      
+      - run:
+          name: git commit
+          command: |
+            git add -A
+            git commit -m "Deploy"
+      
+      - run:
+          name: Deploy Master to Heroku
+          command: |
+            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master -f
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
